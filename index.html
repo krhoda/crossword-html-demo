@@ -16,10 +16,105 @@
 	</main>
 	<script src="https://cdn.jsdelivr.net/npm/wasm_crossword_generator@0.0.2/dist/umd/index.js"></script>
 	<script defer>
+		const words = [
+			{
+				"text": "friends",
+				"clue": null
+			},
+
+			{
+				"text": "dries",
+				"clue": null
+			},
+			{
+				"text": "end",
+				"clue": null
+			},
+			{
+				"text": "ends",
+				"clue": null
+			},
+			{
+				"text": "fed",
+				"clue": null
+			},
+			{
+				"text": "find",
+				"clue": null
+			},
+			{
+				"text": "finds",
+				"clue": null
+			},
+			{
+				"text": "fine",
+				"clue": null
+			},
+			{
+				"text": "finer",
+				"clue": null
+			},
+			{
+				"text": "fines",
+				"clue": null
+			},
+			{
+				"text": "fire",
+				"clue": null
+			},
+			{
+				"text": "fires",
+				"clue": null
+			},
+			{
+				"text": "friend",
+				"clue": null
+			},
+			{
+				"text": "red",
+				"clue": null
+			},
+			{
+				"text": "ride",
+				"clue": null
+			},
+			{
+				"text": "rides",
+				"clue": null
+			},
+			{
+				"text": "send",
+				"clue": null
+			},
+			{
+				"text": "side",
+				"clue": null
+			},
+		];
+
+		const conf = {
+			words,
+			max_words: 100,
+			width: 10,
+			height: 10,
+			requirements: {
+				max_retries: 1500,
+				min_letters_per_word: null,
+				min_words: 12,
+				max_empty_columns: 0,
+				max_empty_rows: 0,
+			},
+			initial_placement: null,
+		};
+
+		let puzzle = null, puzzle_type = "PerWord";
 		try {
 			wasm_crossword_generator.CrosswordClient.initialize().then((client) => {
 				window.CrosswordClient = client;
-				console.log("All is well");
+				let result = window.CrosswordClient.generate_crossword_puzzle(conf, puzzle_type);
+				puzzle = result.puzzle;
+				puzzle_type = result.puzzle_type;
+				console.log(puzzle);
 			})
 		} catch (e) {
 			console.error(e);
