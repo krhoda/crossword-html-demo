@@ -12,15 +12,15 @@
 <body>
 	<main>
 		<h1>Crossword Puzzle</h1>
-		<div id="puzzle-container"></div>
+		<div id="game-container"></div>
 	</main>
 	<script src="https://cdn.jsdelivr.net/npm/wasm_crossword_generator@0.0.2/dist/umd/index.js"></script>
 	<script defer>
 		try {
-		  wasm_crossword_generator.CrosswordClient.initialize().then((client) => {
-			window.CrosswordClient = client;
-			console.log("All is well");
-		  })
+			wasm_crossword_generator.CrosswordClient.initialize().then((client) => {
+				window.CrosswordClient = client;
+				console.log("All is well");
+			})
 		} catch (e) {
 			console.error(e);
 		}
